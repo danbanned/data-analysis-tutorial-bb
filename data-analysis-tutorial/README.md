@@ -92,59 +92,66 @@ agentic-data-quality-analysis-platform/
     └── canva-presentation-design-guide.md
 ```
 
-## Project File Structure
+## Project File Structure (current repository)
 
-When you complete this project, your application will have this structure:
+Below is the current layout of this repository — the working demo lives in the `my-app/` Next.js application folder.
 
 ```
-your-project/
-├── package.json
-├── .env.local                         # OpenAI API key (never commit!)
-├── .gitignore
-├── next.config.js
-├── vitest.config.js                   # Testing configuration
-│
-├── src/
-│   ├── app/
-│   │   ├── layout.js                  # Root layout
-│   │   ├── page.jsx                   # Home page
-│   │   └── analysis/
-│   │       └── page.jsx               # Analysis page
-│   │
-│   ├── components/
-│   │   ├── FileUpload.jsx
-│   │   ├── ErrorBoundary.jsx
-│   │   └── data/
-│   │       ├── DataPreview.jsx
-│   │       ├── QualityScore.jsx
-│   │       ├── AIInsights.jsx
-│   │       ├── DataVisualizations.jsx
-│   │       └── ColumnDetails.jsx
-│   │
-│   ├── lib/
-│   │   ├── dataAnalysis.js            # Core analysis logic
-│   │   └── aiIntegration.js           # OpenAI API integration
-│   │
-│   ├── styles/                         # CSS files (one per component)
-│   │   ├── globals.css                # CSS variables & resets
-│   │   ├── FileUpload.css
-│   │   ├── HomePage.css
-│   │   ├── DataPreview.css
-│   │   ├── QualityScore.css
-│   │   ├── AIInsights.css
-│   │   ├── DataVisualizations.css
-│   │   ├── ColumnDetails.css
-│   │   ├── AnalysisPage.css
-│   │   └── ErrorBoundary.css
-│   │
+data-analysis-tutorial/
+├── 00-problem.md
+├── 01-project-scope.md
+├── 02-wireframes-overview.md
+├── 03-trello-project-board-guide.md
+├── 04-SETUP_INSTRUCTIONS.md
+├── README.md                          # This file
+├── start_here.md
+├── TODO.md
+├── wireframe-imgs/                    # Excalidraw and PNG wireframes
+│   ├── data-quality-platform-architecture.excalidraw
+│   ├── screen1.png
+│   └── screen2.png
+├── prisma/                            # prisma schema (if used)
+│   └── schema.prisma
+├── my-app/                            # Next.js demo application
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── next.config.ts
+│   ├── postcss.config.js
+│   ├── tsconfig.json
+│   ├── .gitignore
+│   ├── .data/                          # small JSON persistence used by demo
+│   │   ├── lineage.json
+│   │   └── dedupe.json
+│   ├── public/
+│   │   ├── datasets/
+│   │   │   ├── sample-sales.csv
+│   │   │   └── sample-customers.csv
+│   │   └── *.svg (icons and assets)
+│   ├── app/                            # Next.js App Router pages
+│   │   ├── layout.js
+│   │   ├── page.jsx                    # Home / upload UI (demo)
+│   │   ├── DataPreview/                # Page-level components
+│   │   │   └── page.jsx
+│   │   ├── AnalysisResultsDashboard/
+│   │   │   └── page.jsx
+│   │   └── DetailedInsightsPage/
+│   │       └── page.jsx
+│   ├── api/                            # Server endpoints used by the UI
+│   │   ├── analyze.js
+│   │   └── ai-suggest.js
+│   ├── lib/                            # server-side libraries & pipeline
+│   │   ├── dataPipeline.js
+│   │   ├── dataAnalysis.js
+│   │   ├── aiIntegration.js
+│   │   └── prisma.js
+│   ├── components/                      # (some components may live here)
+│   │   └── data/                        # component folder (may be empty or in flux)
+│   ├── styles/
+│   │   └── index.css
 │   └── test/
-│       ├── setup.js                   # Vitest setup
-│       └── __tests__/                 # Test files
-│
-└── public/
-    └── datasets/                      # Sample CSV files
-        ├── sample-sales.csv
-        └── sample-customers.csv
+│       └── setup.js
+└── data-analysis-tutorial/README.md    # project-level README (this file)
+
 ```
 
 ## Learning Objectives

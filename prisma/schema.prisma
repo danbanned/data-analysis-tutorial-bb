@@ -1,0 +1,66 @@
+// prisma/schema.prisma
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model RawEvent {
+  id           String   @id @default(cuid())
+  eventHash    String   @unique
+  source       String
+  schemaVersion Int
+  rawPayload   Json
+  rawTsIso     DateTime
+  receivedAt   DateTime @default(now())
+  processed    Boolean  @default(false)
+  reason       String?
+  createdAt    DateTime @default(now())
+}
+
+model Task {
+  id                String   @id @default(cuid())
+  externalId        String?  @unique
+  completionPercent Float?   @db.Decimal(5,2)
+  legacyProgress    Float?   @db.Decimal(10,2)
+  lastEventTs       DateTime?
+  confidence        Int      @default(100)
+  source            String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model ProgressLog {
+  id          String   @id @default(cuid())
+  taskId      String
+  value       Float    @db.Decimal(5,2)
+  eventHash   String
+  eventTs     DateTime
+  createdAt   DateTime @default(now())
+
+  @@index([taskId])
+  @@index([eventTs])
+}
+
+model Anomaly {
+  id         String   @id @default(cuid())
+  eventHash  String
+  reason     String
+  details    Json?
+  severity   String
+  resolved   Boolean  @default(false)
+  createdAt  DateTime @default(now())
+}
+
+model Alert {
+  id         String   @id @default(cuid())
+  type       String
+  source     String?
+  severity   String
+  details    String?
+  createdAt  DateTime @default(now())
+  resolved   Boolean  @default(false)
+}
