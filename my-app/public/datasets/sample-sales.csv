@@ -1,0 +1,3 @@
+order_id,customer,amount,date
+1,Acme,120.0,2025-01-12
+2,Globex,54.0,2025-01-13

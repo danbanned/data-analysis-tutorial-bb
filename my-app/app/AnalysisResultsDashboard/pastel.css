@@ -1,0 +1,244 @@
+/* Page backgrounds */
+.pastel-page {
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(to bottom right, #eff6ff, #e0e7ff);
+  font-family: system-ui, sans-serif;
+}
+
+.pastel-page-bg {
+  min-height: 100vh;
+  padding: 2.5rem;
+  background: linear-gradient(to bottom right, #fff7ed, #fef3c7);
+  font-family: system-ui, sans-serif;
+}
+
+/* Titles */
+.pastel-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #2563eb; /* blue-600 */
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #93c5fd; /* optional border color, can override inline */
+  padding-bottom: 0.25rem;
+}
+
+.pastel-subtitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937; /* gray-800 */
+  margin-bottom: 1rem;
+}
+
+.pastel-mini-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #374151; /* gray-700 */
+  margin-bottom: 0.5rem;
+}
+
+/* Cards */
+.pastel-card {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #e5e7eb; /* gray-200 */
+}
+
+/* Highlights */
+.pastel-highlight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom right, #f97316, #f59e0b);
+  color: white;
+}
+
+.pastel-warning {
+  background-color: #fef3c7; /* amber-50 */
+  border: 1px solid #fcd34d; /* amber-200 */
+}
+
+/* Score circle */
+.score-circle {
+  font-size: 4rem;
+  font-weight: 700;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 9999px;
+  background-color: #2563eb; /* blue-600 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.score-label {
+  font-weight: 600;
+  font-size: 1rem;
+  color: white;
+}
+
+/* Metric rows */
+.metric-row {
+  margin-bottom: 1rem;
+}
+
+.metric-score {
+  font-weight: 700;
+  color: #1f2937; /* gray-800 */
+}
+
+.metric-bar {
+  height: 0.5rem;
+  background-color: #e5e7eb; /* gray-200 */
+  border-radius: 9999px;
+  overflow: hidden;
+  margin: 0.25rem 0;
+}
+
+.metric-fill {
+  height: 100%;
+  background: linear-gradient(to right, #2563eb, #3b82f6);
+}
+
+/* Visualization grid */
+.viz-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media(min-width: 1024px) {
+  .viz-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.bar-label {
+  width: 3rem;
+  font-size: 0.875rem;
+  color: #374151;
+}
+
+.bar-track {
+  flex: 1;
+  height: 0.5rem;
+  background-color: #e5e7eb;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: linear-gradient(to right, #3b82f6, #2563eb);
+}
+
+/* Pie chart */
+.pie-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pie-circle {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 9999px;
+  background-color: #a5b4fc; /* indigo-300 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+}
+
+/* Column issues */
+.issues-box {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  background-color: #f9fafb;
+}
+
+.issue-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.issue-num {
+  font-weight: 600;
+  color: #2563eb; /* blue-600 */
+}
+
+/* AI Insights */
+.icon-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.warn-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #d97706; /* amber-600 */
+}
+
+.pastel-list {
+  list-style-type: disc;
+  margin-left: 1.25rem;
+  color: #374151;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+th, td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+th {
+  font-weight: 600;
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+td span.text-red-500 { color: #ef4444; }
+td span.text-orange-600 { color: #d97706; }
+
+/* Rounded sections with background */
+.bg-gray-50 {
+  background-color: #f9fafb;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.shadow-sm {
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
+.p-6 {
+  padding: 1.5rem;
+}
