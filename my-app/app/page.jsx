@@ -5,7 +5,9 @@ import UploadPage from './uploadpage/UploadPage';
 import DataPreviewPage from './DataPreview/page';
 import AnalysisResultsDashboard from './AnalysisResultsDashboard/page';
 import DetailedInsightsPage from './DetailedInsightsPage/page';
+import CleanedPreviewPage from "./CleanedPreview/page"
 import { profileData } from './utils/dataprofiler';
+import './navigation.css'
 
 // Compute score
 function computeOverallScore(columnStats, rowCount) {
@@ -37,6 +39,8 @@ const App = () => {
   const [totalMissing, setTotalMissing] = useState(0);
   const [totalOutliers, setTotalOutliers] = useState(0);
   const [totalCells, setTotalCells] = useState(0);
+  const [cleanedData, setCleanedData] = useState([]);
+
 
   const handleFileUpload = async (file) => {
     setFileName(file.name);
@@ -129,43 +133,63 @@ const App = () => {
   };
 
   return (
-    <>
-      {currentScreen === 'upload' && (
-        <UploadPage onFileUpload={handleFileUpload} />
-      )}
+    <div className="screen-wrapper">
+        {currentScreen === 'upload' && (
+          <div className="screen active">
+            <UploadPage onFileUpload={handleFileUpload} />
+          </div>
+        )}
 
-      {currentScreen === 'preview' && (
-        <DataPreviewPage
-          fileName={fileName}
-          rowCount={data.length}
-          columnCount={data.length > 0 ? Object.keys(data[0]).length : 0}
-          data={data}
-          columnStats={columnStats}
-          onContinue={() => setCurrentScreen('results')}
-        />
-      )}
+        {currentScreen === 'preview' && (
+          <div className="screen active">
+            <DataPreviewPage
+              fileName={fileName}
+              rowCount={data.length}
+              columnCount={data.length > 0 ? Object.keys(data[0]).length : 0}
+              data={data}
+              columnStats={columnStats}
+              onContinue={() => setCurrentScreen('results')}
+            />
+          </div>
+        )}
 
-      {currentScreen === 'results' && (
-        <AnalysisResultsDashboard
-          data={data}
-          columnStats={columnStats}
-          qualityMetrics={qualityMetrics}
-          overallScore={overallScore}
-          totalMissing={totalMissing}
-          totalOutliers={totalOutliers}
-          totalCells={totalCells}
-          onViewDetails={() => setCurrentScreen('details')}
-        />
-      )}
+        {currentScreen === 'results' && (
+          <div className="screen active">
+            <AnalysisResultsDashboard
+              data={data}
+              columnStats={columnStats}
+              qualityMetrics={qualityMetrics}
+              overallScore={overallScore}
+              totalMissing={totalMissing}
+              totalOutliers={totalOutliers}
+              totalCells={totalCells}
+              onViewDetails={() => setCurrentScreen('details')}
+            />
+          </div>
+        )}
 
-      {currentScreen === 'details' && (
-        <DetailedInsightsPage
-          data={data}
-          columnStats={columnStats}
-          onReset={() => setCurrentScreen('upload')}
+        {currentScreen === 'details' && (
+          <div className="screen active">
+            <DetailedInsightsPage
+              data={data}
+              columnStats={columnStats}
+              onSendCleaned={(clean) => {
+              setCleanedData(clean);
+              setCurrentScreen('cleaned'); // navigate to cleaned screen
+              }}
+              onReset={() => setCurrentScreen('upload')}
+            />
+          </div>
+        )}
+
+        {currentScreen === 'cleaned' && (
+        <CleanedPreviewPage
+          originalData={data}
+          cleanedData={cleanedData}
+          onBack={() => setCurrentScreen('details')}
         />
-      )}
-    </>
+        )}
+      </div>
   );
 };
 

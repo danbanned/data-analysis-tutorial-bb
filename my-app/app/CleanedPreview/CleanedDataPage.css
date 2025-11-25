@@ -1,0 +1,180 @@
+/* components/CleanedPreviewPage.css */
+
+/* --- Page Layout --- */
+.cleaned-page {
+  padding: 40px;                /* bigger */
+  font-family: system-ui, sans-serif;
+  font-size: 18px;              /* bigger base font */
+}
+
+/* --- Header --- */
+.cleaned-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;          /* more spacing */
+}
+
+.cleaned-header h1 {
+  font-size: 34px;              /* bigger title */
+  font-weight: 700;
+}
+
+.header-actions button {
+  margin-left: 14px;            /* bigger gap */
+}
+
+/* --- Buttons --- */
+.btn {
+  padding: 14px 20px;           /* bigger button */
+  font-size: 17px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px solid #dbeafe;
+  background: white;
+  transition: 0.2s ease;
+}
+
+.btn:hover {
+  background: #eef2ff;
+}
+
+.btn.primary {
+  background: #2563eb;
+  color: white;
+  border-color: #2563eb;
+}
+
+.btn.primary:hover {
+  background: #1e4fd0;
+}
+
+/* --- Chart Row --- */
+.charts-row {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  align-items: stretch;
+  margin-bottom: 24px;
+  flex-wrap: wrap;           /* <-- prevents screen from oversizing */
+}
+
+/* --- Chart Card --- */
+.chart-card {
+  flex: 1;                   /* <-- responsive (no forced width) */
+  min-width: 450px;          /* <-- wide enough for charts */
+  max-width: 100%;           /* <-- prevents layout blowout */
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;             /* <-- gives charts breathing room */
+  box-shadow: 0 6px 18px rgba(8, 15, 40, 0.06);
+  box-sizing: border-box;
+}
+
+/* ensure ResponsiveContainer parent has an explicit height */
+.chart-card > .recharts-wrapper,
+.chart-card > div {
+  min-height: 420px;
+}
+
+/* allow overflow visible so svg labels are not clipped by parent */
+.chart-card svg {
+  overflow: visible;
+}
+
+.chart-card h3 {
+  font-size: 22px;
+  margin-bottom: 16px;
+}
+
+/* --- Preview Table --- */
+.preview-section .table-scroll {
+  max-height: 540px;            /* larger preview window */
+  overflow: auto;
+  background: #fff;
+  padding: 16px;                /* bigger */
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(8,15,40,0.06);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;              /* bigger font */
+}
+
+.data-table th {
+  position: sticky;
+  top: 0;
+  background: #f3f4f6;
+  padding: 12px;
+  font-size: 16px;
+  text-align: left;
+  border-bottom: 2px solid #e6eef8;
+}
+
+.data-table td {
+  padding: 12px;
+  border-bottom: 1px solid #f3f4f6;
+  color: #111827;
+  white-space: nowrap;
+}
+
+/* --- Diff Viewer --- */
+.diff-section {
+  margin-top: 28px;
+}
+
+.diff-card {
+  margin-bottom: 20px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 14px;
+  border-left: 6px solid #f59e0b;
+  box-shadow: 0 6px 20px rgba(8,15,40,0.06);
+}
+
+.diff-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+}
+
+.diff-table td,
+.diff-table th {
+  padding: 10px;
+  border-bottom: 1px dashed #ddd;
+}
+
+.diff-before {
+  background: #fff7ed;
+}
+
+.diff-after {
+  background: #ecfdf5;
+}
+
+/* --- Removed Rows --- */
+.removed-row {
+  background: #fff;
+  border-left: 6px solid #f87171;
+  padding: 16px;
+  margin-bottom: 14px;
+  border-radius: 12px;
+  font-size: 16px;
+}
+
+.removed-pre {
+  margin: 10px 0 0 0;
+  font-size: 15px;
+  background: #11182708;
+  padding: 14px;
+  border-radius: 10px;
+  line-height: 1.6;
+}
+
+/* --- Text Muted --- */
+.muted {
+  color: #64748b;
+  font-size: 16px;
+}

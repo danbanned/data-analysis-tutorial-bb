@@ -1,0 +1,78 @@
+/* Full-page wrapper */
+.screen-wrapper {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: linear-gradient(to bottom right, #fafafa, #f2f2f2);
+  padding: 2rem;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Each screen (Upload, Preview, Results, Details) */
+.screen {
+  width: 100%;
+  max-width: 1200px;
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+/* Screen becomes visible */
+.screen.active {
+  opacity: 1;
+  transform: translateY(0px);
+  pointer-events: auto;
+}
+
+/* Smooth slide on entering */
+@keyframes slideFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.screen.active {
+  animation: slideFadeIn 0.4s ease;
+}
+
+/* Optional: button styles for navigation */
+.nav-button {
+  display: inline-block;
+  padding: 0.75rem 1.4rem;
+  background: #ff7a1f;
+  color: white;
+  border-radius: 10px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.nav-button:hover {
+  background: #e56d19;
+}
+
+.nav-button.secondary {
+  background: #ececec;
+  color: #333;
+}
+
+.nav-button.secondary:hover {
+  background: #dedede;
+}

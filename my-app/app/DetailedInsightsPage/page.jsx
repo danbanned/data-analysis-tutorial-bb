@@ -8,6 +8,7 @@ import { generateAiInsights } from "../utils/ai-suggest";
 
 
 export default function DetailedInsightsPage({
+  onSendCleaned, // 👈 add this
   columnStats = [],
   data = [],
   onReset
@@ -20,9 +21,16 @@ export default function DetailedInsightsPage({
   const [aiRecommendations, setAiRecommendations] = useState([]);
 
    const handleGenerateAi = () => {
-  const { summary, recommendations } = generateAiInsights(data);
-  setAiInsightText(summary);
-  setAiRecommendations(recommendations);
+      const { summary, recommendations, cleanedData, columnSummaries } =
+        generateAiInsights(data);
+
+        setAiInsightText(summary);
+        setAiRecommendations(recommendations);
+
+        // 👇 Send cleaned dataset up to the parent so another screen can use it
+        if (onSendCleaned) {
+          onSendCleaned(cleanedData);
+  }
 };
 
 // Download a CSV of the full dataset
